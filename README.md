@@ -8,3 +8,5 @@ Complexity of each day-part (where q is number of queries/inputs given, n is siz
 | 1   | 2    | O(q)                    | O(1)                 |
 | 2   | 1    | O(q * log(n) * sqrt(n)) | O(log(n) * sqrt(n))  |
 | 2   | 2    | O(q * log(n) * sqrt(n)) | O(log(n) * sqrt(n))  |
+| 3   | 1    | O(n * q)                | O(n * q)             |
+| 3   | 2    | O(n * q)                | O(n * q)             |
