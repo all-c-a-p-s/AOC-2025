@@ -1,10 +1,9 @@
 const INPUT: &'static str = include_str!("./day03.in");
 
-pub fn get() -> Vec<Vec<u8>> {
+pub fn get() -> impl Iterator<Item = Vec<u8>> {
     INPUT
         .lines()
-        .map(|x| x.bytes().map(|y| y - b'0').collect())
-        .collect()
+        .map(|x| x.bytes().map(|y| y - b'0').collect::<Vec<_>>())
 }
 
 fn r(x: &[u8], i: usize, k: usize) -> i64 {
@@ -23,11 +22,11 @@ fn r(x: &[u8], i: usize, k: usize) -> i64 {
 pub fn part_one() -> i64 {
     let ls = get();
 
-    ls.iter().map(|x| r(x, 0, 2)).sum()
+    ls.map(|x| r(&x, 0, 2)).sum()
 }
 
 pub fn part_two() -> i64 {
     let ls = get();
 
-    ls.iter().map(|x| r(x, 0, 12)).sum()
+    ls.map(|x| r(&x, 0, 12)).sum()
 }

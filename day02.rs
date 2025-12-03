@@ -2,17 +2,14 @@ use std::collections::HashSet;
 
 const INPUT: &'static str = include_str!("./day02.in");
 
-fn get() -> Vec<(i128, i128)> {
-    INPUT
-        .split(",")
-        .map(|x| {
-            let t = x
-                .split("-")
-                .map(|y| y.trim().parse::<i128>().unwrap())
-                .collect::<Vec<_>>();
-            (t[0], t[1])
-        })
-        .collect()
+fn get() -> impl Iterator<Item = (i128, i128)> {
+    INPUT.split(",").map(|x| {
+        let t = x
+            .split("-")
+            .map(|y| y.trim().parse::<i128>().unwrap())
+            .collect::<Vec<_>>();
+        (t[0], t[1])
+    })
 }
 
 fn digits(mut n: i128) -> Vec<i128> {
