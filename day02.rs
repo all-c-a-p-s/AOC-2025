@@ -2,13 +2,13 @@ use std::collections::HashSet;
 
 const INPUT: &'static str = include_str!("./day02.in");
 
-fn get_ranges() -> Vec<(i128, i128)> {
+fn get() -> Vec<(i128, i128)> {
     INPUT
         .split(",")
         .map(|x| {
             let t = x
                 .split("-")
-                .map(|y| y.trim().parse::<i128>().expect(y))
+                .map(|y| y.trim().parse::<i128>().unwrap())
                 .collect::<Vec<_>>();
             (t[0], t[1])
         })
@@ -33,7 +33,7 @@ fn digits_to_num(ds: &[i128]) -> i128 {
 }
 
 pub fn part_one() -> i128 {
-    let ranges = get_ranges();
+    let ranges = get();
     let mut t = 0;
     for (x, y) in ranges {
         let d_x = digits(x);
@@ -67,7 +67,7 @@ pub fn part_one() -> i128 {
 }
 
 pub fn part_two() -> i128 {
-    let ranges = get_ranges();
+    let ranges = get();
     let mut t = 0;
     for (x, y) in ranges {
         let (d_x, d_y) = (digits(x), digits(y));

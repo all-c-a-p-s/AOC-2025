@@ -1,15 +1,18 @@
 const INPUT: &'static str = include_str!("./day01.in");
 
-pub fn part_one() -> i64 {
-    let vcs: Vec<Vec<char>> = INPUT
-        .lines()
-        .map(|x| x.chars().collect::<Vec<_>>())
-        .collect();
+fn get() -> impl Iterator<Item = i64> {
+    INPUT.lines().map(|x| {
+        x.chars()
+            .skip(1)
+            .collect::<String>()
+            .parse::<i64>()
+            .unwrap()
+            * if x.chars().nth(0) == Some('R') { 1 } else { -1 }
+    })
+}
 
-    let moves = vcs.iter().map(|x| {
-        &x[1..].iter().collect::<String>().parse::<i64>().unwrap()
-            * if x[0] == 'R' { 1 } else { -1 }
-    });
+pub fn part_one() -> i64 {
+    let moves = get();
 
     let mut pos = 50;
     let mut cnt = 0;
@@ -23,15 +26,7 @@ pub fn part_one() -> i64 {
 }
 
 pub fn part_two() -> i64 {
-    let vcs: Vec<Vec<char>> = INPUT
-        .lines()
-        .map(|x| x.chars().collect::<Vec<_>>())
-        .collect();
-
-    let moves = vcs.iter().map(|x| {
-        &x[1..].iter().collect::<String>().parse::<i64>().unwrap()
-            * if x[0] == 'R' { 1 } else { -1 }
-    });
+    let moves = get();
 
     let mut pos = 50;
     let mut cnt = 0;
