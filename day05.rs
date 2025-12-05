@@ -19,45 +19,58 @@ fn get() -> (Vec<(i128, i128)>, Vec<i128>) {
     (rs, ns)
 }
 
-pub fn part_one() -> i128 {
-    let (rs, ns) = get();
-    ns.iter()
-        .map(|&x| {
-            for &r in &rs {
-                if r.0 <= x && r.1 >= x {
-                    return 1;
-                }
-            }
+fn get_non_overlapping(mut rs: Vec<(i128, i128)>) -> Vec<(i128, i128)> {
+    rs.sort_by(|a, b| a.0.cmp(&b.0));
+    let mut v = vec![];
 
-            0
-        })
-        .sum()
-}
-pub fn part_two() -> i128 {
-    let (mut rs, _) = get();
-    let n = rs.len();
+    let mut prev = rs[0];
 
-    let mut u = vec![true; n];
-
-    for i in 0..n {
-        for j in 0..n {
-            if j == i {
-                continue;
-            }
-            if rs[j].0 >= rs[i].0 && rs[j].0 <= rs[i].1 {
-                rs[i].1 = rs[i].1.max(rs[j].1);
-                u[i] = true;
-                u[j] = false;
-            } else if rs[j].1 >= rs[i].0 && rs[j].1 <= rs[i].1 {
-                rs[i].0 = rs[i].0.min(rs[j].0);
-                u[i] = true;
-                u[j] = false;
-            }
+    for x in rs {
+        if prev.1 < x.0 {
+            v.push(prev);
+            prev = x;
+            continue;
         }
+
+        prev.1 = prev.1.max(x.1);
     }
 
-    (0..n)
-        .filter(|&i| u[i])
-        .map(|i| rs[i].1 - rs[i].0 + 1)
-        .sum()
+    v.push(prev);
+
+    v
+}
+
+pub fn part_one() -> i128 {
+    let (rs, ns) = get();
+
+    let v = get_non_overlapping(rs);
+    let n = v.len();
+
+    let mut cnt = 0;
+
+    for x in ns {
+        let (mut lo, mut hi) = (0, n - 1);
+        while lo < hi {
+            let mid = lo + (hi - lo) / 2;
+            if v[mid].1 < x {
+                lo = mid + 1;
+            } else if v[mid].0 > x {
+                hi = mid - 1;
+            } else {
+                lo = mid;
+                break;
+            }
+        }
+
+        cnt += i128::from(v[lo].0 <= x && v[lo].1 >= x);
+    }
+
+    cnt
+}
+
+pub fn part_two() -> i128 {
+    let (rs, _) = get();
+
+    let v = get_non_overlapping(rs);
+    v.iter().map(|x| x.1 - x.0 + 1).sum()
 }
