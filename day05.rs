@@ -56,16 +56,6 @@ pub fn part_two() -> i128 {
         }
     }
 
-    let mut ok = vec![];
-    for i in 0..n {
-        if u[i] {
-            ok.push(rs[i]);
-        }
-    }
-
-    ok.sort_by(|a, b| a.0.cmp(&b.0));
-    println!("{:?}", ok);
-
     (0..n)
         .filter(|&i| u[i])
         .map(|i| rs[i].1 - rs[i].0 + 1)
