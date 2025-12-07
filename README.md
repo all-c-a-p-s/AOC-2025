@@ -16,3 +16,5 @@ Complexity of each day-part (where q is number of queries/inputs given, n is siz
 | 5   | 2    | O(n log(n))             | O(n)                 |
 | 6   | 1    | O(n)                    | O(n)                 |
 | 6   | 2    | O(n)                    | O(n)                 |
+| 7   | 1    | O(n)                    | O(n)                 |
+| 7   | 2    | O(n)                    | O(n)                 |
