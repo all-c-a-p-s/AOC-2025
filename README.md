@@ -1,4 +1,4 @@
-I've been doing some competitive programming recently, so this year I want to focus on making optimal solutions in terms of time/space complexity.
+I've been doing some competitive programming recently, so this year I want to focus on making optimal solutions in terms of time/space complexity (ignore day 9 part 2...).
 
 Complexity of each day-part (where q is number of queries/inputs given, n is size of each input):
 
@@ -20,3 +20,5 @@ Complexity of each day-part (where q is number of queries/inputs given, n is siz
 | 7   | 2    | O(n)                    | O(n)                 |
 | 8   | 1    | O(n ^ 2)                | O(n)                 |
 | 8   | 2    | O(n ^ 2 * log(n))       | O(n ^ 2)             |
+| 9   | 1    | O(q ^ 2)                | O(q)                 |
+| 9   | 2    | O(area of grid)         | O(area of grid)      |
