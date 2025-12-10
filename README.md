@@ -1,24 +1,10 @@
-I've been doing some competitive programming recently, so this year I want to focus on making optimal solutions in terms of time/space complexity (ignore day 9 part 2...).
+# My AOC 2025 Solutions
 
-Complexity of each day-part (where q is number of queries/inputs given, n is size of each input):
+Most of these solutions are very efficient. 
 
-| Day | Part | TC                      | SC                   |
-|-----|------|-------------------------|----------------------|
-| 1   | 1    | O(q)                    | O(1)                 |
-| 1   | 2    | O(q)                    | O(1)                 |
-| 2   | 1    | O(q * log(n) * sqrt(n)) | O(log(n) * sqrt(n))  |
-| 2   | 2    | O(q * log(n) * sqrt(n)) | O(log(n) * sqrt(n))  |
-| 3   | 1    | O(n * q)                | O(n * q)             |
-| 3   | 2    | O(n * q)                | O(n * q)             |
-| 4   | 1    | O(n)                    | O(n)                 |
-| 4   | 2    | O(n)                    | O(n)                 |
-| 5   | 1    | O(n log(n) + q log(n))  | O(n)                 |
-| 5   | 2    | O(n log(n))             | O(n)                 |
-| 6   | 1    | O(n)                    | O(n)                 |
-| 6   | 2    | O(n)                    | O(n)                 |
-| 7   | 1    | O(n)                    | O(n)                 |
-| 7   | 2    | O(n)                    | O(n)                 |
-| 8   | 1    | O(n ^ 2)                | O(n)                 |
-| 8   | 2    | O(n ^ 2 * log(n))       | O(n ^ 2)             |
-| 9   | 1    | O(q ^ 2)                | O(q)                 |
-| 9   | 2    | O(area of grid)         | O(area of grid)      |
+I've been trying to do them with zero dependencies and without looking things up, which has led to some difficulties in later days...
+
+Day 9 part 2 takes about 4 mins on my laptop.
+
+For day 10 part 2 I'm pretty sure the solution is to do simplex with branch and bound or something like that but I don't wanna add dependencies and don't really have time to write that all myself, so I gave up after realising my lazy Dijkstra attempt was way too slow.
+
