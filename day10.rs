@@ -165,7 +165,6 @@ pub fn part_two() -> i64 {
                     res
                 })
                 .collect::<Vec<_>>();
-            println!("starting line");
             lazy_dijkstra(start, &ops)
         })
         .sum()
